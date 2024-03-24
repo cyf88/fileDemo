@@ -1,0 +1,65 @@
+
+cmake_minimum_required(VERSION 3.22)
+
+project ("test" LANGUAGES C CXX)
+
+
+
+message(STATUS "Project Name:  ${PROJECT_NAME}")
+message(STATUS "Project Source: ${TEST_DIR}")
+message(STATUS "Project Binary: ${PROJECT_BINARY_DIR}")
+message(STATUS "编译类型: ${CMAKE_BUILD_TYPE}")
+
+message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+message(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
+message(STATUS "CMAKE_CURRENT_SOURCE_DIR: ${CMAKE_CURRENT_SOURCE_DIR}")
+message(STATUS "CMAKE_CURRENT_BINARY_DIR: ${CMAKE_CURRENT_BINARY_DIR}")
+message(STATUS "CMAKE_CURRENT_LIST_FILE: ${CMAKE_CURRENT_LIST_FILE}")
+message(STATUS "CMAKE_CURRENT_LIST_DIR: ${CMAKE_CURRENT_LIST_DIR}")
+message(STATUS "CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
+message(STATUS "CMAKE_INCLUDE_PATH: ${CMAKE_INCLUDE_PATH}")
+message(STATUS "CMAKE_LIBRARY_PATH: ${CMAKE_LIBRARY_PATH}")
+message(STATUS "CMAKE_SYSTEM: ${CMAKE_SYSTEM}")
+message(STATUS "CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "CMAKE_SYSTEM_VERSION: ${CMAKE_SYSTEM_VERSION}")
+message(STATUS "CMAKE_C_COMPILER: ${CMAKE_C_COMPILER}")
+message(STATUS "CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
+message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+message(STATUS "CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")
+
+
+
+# 使能 C++11
+set(CMAKE_CXX_STANDARD 11)
+
+
+# 设置相关包含目录
+set(SOURCE_DIR ${TEST_DIR}/src)
+
+# 查找在某个路径下的所有源文件
+aux_source_directory(${SOURCE_DIR} SOURCE_FILES)
+
+
+# 将源代码添加到此项目的可执行文件。
+message(STATUS "SOURCE_FILES: ${SOURCE_FILES}")
+message(STATUS "PROJECT_NAME: ${PROJECT_NAME}")
+message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+
+
+include_directories("${SDK_DIR}/inc" "${TEST_DIR}/inc")
+link_directories("${CMAKE_BINARY_DIR}/sdk")
+
+
+# build stage
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+
+
+#set_target_properties(${PROJECT_NAME} PROPERTIES
+#        RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}
+#)
+
+target_link_libraries(
+        ${PROJECT_NAME}
+        sdk
+)
+
