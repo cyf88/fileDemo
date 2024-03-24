@@ -84,6 +84,7 @@ ULONG time_parameters_set(DecodeCtx* ctx, unsigned char* rbspBuffer, ULONG rbspB
         bitset_2_char(ctx->nalCtx.bits, startIndex, 5, &data);
         time_ptr->day_bits = data;
     }
+    return 0;
 
 }
 
