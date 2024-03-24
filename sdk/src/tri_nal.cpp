@@ -47,7 +47,7 @@ ULONG time_parameters_set(DecodeCtx* ctx, unsigned char* rbspBuffer, ULONG rbspB
     if (time_ptr == NULL) {
         return 1;
     }
-    memset(time_ptr, 0x00, sizeof(ses_parameters));
+    memset(time_ptr, 0x00, sizeof(time_parameters));
     ctx->nalCtx.bits->reset();
     ULONG bitsLen = 0;
     ULONG startIndex = 0;
