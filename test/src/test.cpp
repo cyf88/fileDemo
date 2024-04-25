@@ -4,7 +4,13 @@
 #include "TriPsReader.h"
 #include <iostream>
 #include "mongoose.h"
+#include "nlohmann/json.hpp"
+#include <map>
+#include <vector>
 
+using json = nlohmann::json;
+json jsonRes;
+std::vector<std::map<std::string, std::string>> failframes;
 
 static const char *s_http_addr = "http://0.0.0.0:8000";    // HTTP port
 static const char *s_https_addr = "https://0.0.0.0:8443";  // HTTPS port
@@ -15,13 +21,21 @@ static const char *s_root_dir = ".";
 
 int signSucNum = 0;
 int signFailNum = 0;
-int sign_notify(unsigned int uiChan, ULONG ulRetCode) {
-    std::cout << "sign_notify uiChan: " << uiChan << " RetCode: " << ulRetCode << std::endl;
+char* g_streamId;
+
+int sign_notify(unsigned int uiChan, ULONG ulRetCode, char* streamId, char* time) {
+    std::cout << "sign_notify uiChan: " << uiChan << " RetCode: "
+        << ulRetCode << "streamId: "<< streamId << std::endl;
+    g_streamId = streamId;
     if (ulRetCode == 0) {
         signSucNum++;
         std::cout << "signSucNum: " << signSucNum << std::endl;
     } else {
         signFailNum++;
+        std::map<std::string, std::string> failmap;
+        failmap.emplace("offset", std::to_string(signSucNum + signFailNum));
+        failmap.emplace("time", time);
+        failframes.push_back(failmap);
     }
 
 }
@@ -44,8 +58,14 @@ static void ev_handler(struct mg_connection *c, int ev, void *ev_data) {
 
             if (triPsReader->init()) {
                 triPsReader->doRead();
-                mg_http_reply(c, 200, "Content-Type: application/json\r\n",
-                              "{\"signSuc\":%d,\"signFail\":%d}", signSucNum, signFailNum);
+                jsonRes["signSuc"] = signSucNum;
+                jsonRes["signFail"] = signFailNum;
+                jsonRes["streamId"] = g_streamId;
+                json j_vec(failframes);
+                jsonRes["failFrames"] = j_vec;
+                mg_http_reply(c, 200, "Content-Type: application/json\r\n", jsonRes.dump().c_str());
+//                mg_http_reply(c, 200, "Content-Type: application/json\r\n",
+//                              "{\"signSuc\":%d,\"signFail\":%d}", signSucNum, signFailNum);
             } else {
                 mg_http_reply(c, 500, "Content-Type: application/json\r\n", "{\"result\":%s}", "error");
             }

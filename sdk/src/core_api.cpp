@@ -89,7 +89,18 @@ ULONG FRI_MUT_VideoDataSecDecodeExt(unsigned int uiChan, IMG_FRAME_UNIT* pstImgD
     int ret = decryptNalUnitsStream(tmp, pstImgData->img_buf, pstImgData->imgsz, (*ppstOutData)->img_buf, (ULONG*)&((*ppstOutData)->imgsz), true, &authResult);
     //std::cout << "decryptNalUnitsStream authResult：" << authResult;
     if (trimps::signNotifyCallback != NULL) {
-        trimps::signNotifyCallback(uiChan, authResult);
+        char time[100];
+        time_parameters timeparam = tmp->nalCtx.timeparamPtr;
+        if (timeparam.ref_data_flag) {
+            sprintf(time, "%d-%d-%dT%d:%d:%d.%03d", timeparam.year_minus2000_bits+2000, timeparam.month_bits,
+                    timeparam.day_bits, timeparam.hour_bits, timeparam.minute_bits,
+                    timeparam.second_bits, timeparam.second_fraction_bits * 1000 /16384);
+        } else {
+            sprintf(time, "%d:%d:%d.%03d", timeparam.hour_bits, timeparam.minute_bits,
+                    timeparam.second_bits, timeparam.second_fraction_bits * 1000 /16384);
+        }
+
+        trimps::signNotifyCallback(uiChan, authResult, (char*)tmp->stream_id, time);
     }
 
     return ret;

@@ -5,10 +5,11 @@
 #include <iomanip>
 #include <openssl/md5.h>
 #include <openssl/skf.h>
-
+#include "type_def.h"
 
 
 using namespace std;
+
 
 ULONG bitset_2_char(const std::bitset<MAX_BITS_LENGTH>* bits, ULONG startBitIndex, ULONG len, unsigned char* buf) {
 	char ch = { 0 };

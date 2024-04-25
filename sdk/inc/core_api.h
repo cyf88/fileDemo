@@ -228,7 +228,7 @@ typedef int (* FUNC_SUT_DEVEVENTMONITOR)(char* szDevName, unsigned int uiEvent);
 /*
 验签实时结果通知
 */
-typedef int (* FUNC_SUT_SIGNVERIFYNOTIFY)(unsigned int uiChan, ULONG ulRetCode);
+typedef int (* FUNC_SUT_SIGNVERIFYNOTIFY)(unsigned int uiChan, ULONG ulRetCode, char* streamId, char* time);
 
 
 ULONG FRI_MUT_RequestChan(unsigned int* puiChan);
