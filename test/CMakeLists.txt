@@ -4,7 +4,6 @@ cmake_minimum_required(VERSION 3.22)
 project ("test" LANGUAGES C CXX)
 
 
-
 message(STATUS "Project Name:  ${PROJECT_NAME}")
 message(STATUS "Project Source: ${TEST_DIR}")
 message(STATUS "Project Binary: ${PROJECT_BINARY_DIR}")
@@ -61,5 +60,8 @@ add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 target_link_libraries(
         ${PROJECT_NAME}
         sdk
+        pthread
+        dl
+
 )
 
