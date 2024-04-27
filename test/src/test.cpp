@@ -9,7 +9,7 @@
 #include <vector>
 
 using json = nlohmann::json;
-json jsonRes;
+
 std::vector<std::map<std::string, std::string>> failframes;
 
 static const char *s_http_addr = "http://0.0.0.0:8000";    // HTTP port
@@ -21,12 +21,12 @@ static const char *s_root_dir = ".";
 
 int signSucNum = 0;
 int signFailNum = 0;
-char* g_streamId;
+std::string g_streamId;
 
 int sign_notify(unsigned int uiChan, ULONG ulRetCode, char* streamId, char* time) {
     std::cout << "sign_notify uiChan: " << uiChan << " RetCode: "
         << ulRetCode << "streamId: "<< streamId << std::endl;
-    g_streamId = streamId;
+    g_streamId = std::string(streamId).substr(0, 19);
     if (ulRetCode == 0) {
         signSucNum++;
         std::cout << "signSucNum: " << signSucNum << std::endl;
@@ -52,20 +52,21 @@ static void ev_handler(struct mg_connection *c, int ev, void *ev_data) {
             std::cout << "certFile: " << certFile << std::endl;
             signSucNum = 0;
             signFailNum = 0;
+            failframes.clear();
             auto triPsReader = new TriPsReader(streamFile.c_str(),
                                                certFile.c_str(),
                                                reinterpret_cast<FUNC_SUT_SIGNVERIFYNOTIFY>(sign_notify));
 
             if (triPsReader->init()) {
                 triPsReader->doRead();
+                json jsonRes;
                 jsonRes["signSuc"] = signSucNum;
                 jsonRes["signFail"] = signFailNum;
                 jsonRes["streamId"] = g_streamId;
                 json j_vec(failframes);
                 jsonRes["failFrames"] = j_vec;
                 mg_http_reply(c, 200, "Content-Type: application/json\r\n", jsonRes.dump().c_str());
-//                mg_http_reply(c, 200, "Content-Type: application/json\r\n",
-//                              "{\"signSuc\":%d,\"signFail\":%d}", signSucNum, signFailNum);
+
             } else {
                 mg_http_reply(c, 500, "Content-Type: application/json\r\n", "{\"result\":%s}", "error");
             }
