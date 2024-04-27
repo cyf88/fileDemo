@@ -37,7 +37,7 @@ int sign_notify(unsigned int uiChan, ULONG ulRetCode, char* streamId, char* time
         failmap.emplace("time", time);
         failframes.push_back(failmap);
     }
-
+    return 0;
 }
 
 
