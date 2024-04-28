@@ -23,8 +23,8 @@ RUN git clone --depth=1 https://github.com/cyf88/fileDemo.git && \
 WORKDIR /opt/sign/fileDemo/build
 RUN cmake -DCMAKE_BUILD_TYPE=Release .. && \
     make
-RUN copy test/test /usr/local/bin/ && \
-    copy sdk/libsdk.so /usr/local/lib/ && \
+RUN cp test/test /usr/local/bin/ && \
+    cp sdk/libsdk.so /usr/local/lib/ && \
 
 ENV PATH /usr/local/lib/:$PATH
 CMD ["/usr/local/bin/test"]
