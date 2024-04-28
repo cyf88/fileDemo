@@ -1,8 +1,13 @@
 1.project
     离线ps文件验证服务
+
 2.start
     运行docker目录下build_image.sh脚本，制作镜像和启动容器
-3.http接口
+
+3.测试
+    测试文件位于ps目录下，ps流文件和证书文件，路径与docker映射目录一致
+
+4.http接口
     POST  http://192.168.56.10:8089/sign/start
     request body:
         {
@@ -21,3 +26,4 @@
             "signSuc": 15,
             "streamId": "1310000000132200022"
         }
+
