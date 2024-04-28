@@ -1,0 +1,10 @@
+version: '2'
+services:
+   signserver:
+      image: cyf/signserver:22.04
+      container_name: signserver
+      ports:
+       - '8089:8000'
+      volumes:
+       - /home/vagrant/git:/workspace
+      restart: on-failure
