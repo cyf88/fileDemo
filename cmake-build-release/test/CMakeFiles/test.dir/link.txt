@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/test.dir/src/TriPsReader.cpp.o CMakeFiles/test.dir/src/mongoose.c.o CMakeFiles/test.dir/src/test.cpp.o -o test   -L/mnt/e/35114/fileDemo/cmake-build-release/sdk  -Wl,-rpath,/mnt/e/35114/fileDemo/cmake-build-release/sdk ../sdk/libsdk.so -lpthread -ldl 

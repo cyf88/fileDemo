@@ -7,8 +7,7 @@ RUN apt-get update && \
         apt-get install -y --no-install-recommends \
         build-essential \
         cmake \
-        ca-certificates \
-        git && \
+        git \
         apt-get autoremove -y && \
         apt-get clean -y && \
     rm -rf /var/lib/apt/lists/*

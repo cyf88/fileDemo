@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/test.dir/src/TriPsReader.cpp.o CMakeFiles/test.dir/src/test.cpp.o -o test   -L/mnt/e/35114/fileDemo/cmake-build-debug/sdk  -Wl,-rpath,/mnt/e/35114/fileDemo/cmake-build-debug/sdk ../sdk/libsdk.so -lssl -lcrypto 
