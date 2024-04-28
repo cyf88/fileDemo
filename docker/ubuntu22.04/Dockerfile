@@ -24,7 +24,7 @@ WORKDIR /opt/sign/fileDemo/build
 RUN cmake -DCMAKE_BUILD_TYPE=Release .. && \
     make
 RUN cp test/test /usr/local/bin/ && \
-    cp sdk/libsdk.so /usr/local/lib/ && \
+    cp sdk/libsdk.so /usr/local/lib/
 
 ENV PATH /usr/local/lib/:$PATH
 CMD ["/usr/local/bin/test"]
