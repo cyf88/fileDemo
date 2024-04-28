@@ -1,0 +1,8 @@
+/mnt/e/35114/fileDemo/cmake-build-release/CMakeFiles/edit_cache.dir
+/mnt/e/35114/fileDemo/cmake-build-release/CMakeFiles/rebuild_cache.dir
+/mnt/e/35114/fileDemo/cmake-build-release/sdk/CMakeFiles/sdk.dir
+/mnt/e/35114/fileDemo/cmake-build-release/sdk/CMakeFiles/edit_cache.dir
+/mnt/e/35114/fileDemo/cmake-build-release/sdk/CMakeFiles/rebuild_cache.dir
+/mnt/e/35114/fileDemo/cmake-build-release/test/CMakeFiles/test.dir
+/mnt/e/35114/fileDemo/cmake-build-release/test/CMakeFiles/edit_cache.dir
+/mnt/e/35114/fileDemo/cmake-build-release/test/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="92b76943-085d-4e59-8693-f84a8f67f349" name="wsl">
+        <fileTransfer rootFolder="/home/cyf" accessType="SFTP" host="127.0.0.1" port="55555" sshConfigId="cbe05a44-c755-404a-8b21-281aaa7b49bc" sshConfig="cyf@127.0.0.1:55555 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseRsync="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

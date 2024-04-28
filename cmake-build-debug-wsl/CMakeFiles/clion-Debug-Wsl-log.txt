@@ -1,0 +1,31 @@
+C:\WINDOWS\system32\wsl.exe --distribution Ubuntu --exec /bin/bash -c "export CMAKE_COLOR_DIAGNOSTICS=ON && export CLION_IDE=TRUE && export JETBRAINS_IDE=TRUE && cd /mnt/e/35114/fileDemo/cmake-build-debug-wsl && /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G 'CodeBlocks - Unix Makefiles' -S /mnt/e/35114/fileDemo -B /mnt/e/35114/fileDemo/cmake-build-debug-wsl"
+-- Project Name: sdk
+-- Project Source: /mnt/e/35114/fileDemo/sdk
+-- Project Binary: /mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk
+-- 编译类型: Debug
+-- Project Name:  test
+-- Project Source: /mnt/e/35114/fileDemo/test
+-- Project Binary: /mnt/e/35114/fileDemo/cmake-build-debug-wsl/test
+-- 编译类型: Debug
+-- CMAKE_SOURCE_DIR: /mnt/e/35114/fileDemo
+-- CMAKE_BINARY_DIR: /mnt/e/35114/fileDemo/cmake-build-debug-wsl
+-- CMAKE_CURRENT_SOURCE_DIR: /mnt/e/35114/fileDemo/test
+-- CMAKE_CURRENT_BINARY_DIR: /mnt/e/35114/fileDemo/cmake-build-debug-wsl/test
+-- CMAKE_CURRENT_LIST_FILE: /mnt/e/35114/fileDemo/test/CMakeLists.txt
+-- CMAKE_CURRENT_LIST_DIR: /mnt/e/35114/fileDemo/test
+-- CMAKE_MODULE_PATH: 
+-- CMAKE_INCLUDE_PATH: 
+-- CMAKE_LIBRARY_PATH: 
+-- CMAKE_SYSTEM: Linux-5.15.133.1-microsoft-standard-WSL2
+-- CMAKE_SYSTEM_NAME: Linux
+-- CMAKE_SYSTEM_VERSION: 5.15.133.1-microsoft-standard-WSL2
+-- CMAKE_C_COMPILER: /usr/bin/cc
+-- CMAKE_CXX_COMPILER: /usr/bin/c++
+-- CMAKE_BUILD_TYPE: Debug
+-- CMAKE_INSTALL_PREFIX: /usr/local
+-- SOURCE_FILES: /mnt/e/35114/fileDemo/test/src/TriPsReader.cpp;/mnt/e/35114/fileDemo/test/src/mongoose.c;/mnt/e/35114/fileDemo/test/src/test.cpp
+-- PROJECT_NAME: test
+-- CMAKE_SOURCE_DIR: /mnt/e/35114/fileDemo
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/e/35114/fileDemo/cmake-build-debug-wsl

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="sdk"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\sdk\;CMake Files\test\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sdk">
+				<Option output="/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/libsdk.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/e/35114/fileDemo/sdk/inc"/>
+					<Add directory="/mnt/e/35114/fileDemo/sdk/3rdpart/gmssl/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 sdk"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sdk/fast">
+				<Option output="/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/libsdk.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/e/35114/fileDemo/sdk/inc"/>
+					<Add directory="/mnt/e/35114/fileDemo/sdk/3rdpart/gmssl/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 sdk/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/mnt/e/35114/fileDemo/cmake-build-debug-wsl/sdk/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/e/35114/fileDemo/sdk/src/core_api.cpp">
+			<Option target="sdk"/>
+		</Unit>
+		<Unit filename="/mnt/e/35114/fileDemo/sdk/src/easylogging++.cc">
+			<Option target="sdk"/>
+		</Unit>
+		<Unit filename="/mnt/e/35114/fileDemo/sdk/src/globalvar.cpp">
+			<Option target="sdk"/>
+		</Unit>
+		<Unit filename="/mnt/e/35114/fileDemo/sdk/src/tri_gmssl.cpp">
+			<Option target="sdk"/>
+		</Unit>
+		<Unit filename="/mnt/e/35114/fileDemo/sdk/src/tri_nal.cpp">
+			<Option target="sdk"/>
+		</Unit>
+		<Unit filename="/mnt/e/35114/fileDemo/sdk/src/tri_skf_api.cpp">
+			<Option target="sdk"/>
+		</Unit>
+		<Unit filename="/mnt/e/35114/fileDemo/sdk/src/tri_util.cpp">
+			<Option target="sdk"/>
+		</Unit>
+		<Unit filename="/mnt/e/35114/fileDemo/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/mnt/e/35114/fileDemo/sdk/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\sdk\"/>
+		</Unit>
+		<Unit filename="/mnt/e/35114/fileDemo/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

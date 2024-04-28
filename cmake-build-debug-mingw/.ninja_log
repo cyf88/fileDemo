@@ -1,0 +1,4 @@
+# ninja log v5
+18	3758	7359242933150826	sdk/CMakeFiles/sdk.dir/src/globalvar.cpp.obj	f45bb6364282e042
+10	29485	7359243190241460	sdk/CMakeFiles/sdk.dir/src/easylogging++.cc.obj	3f262666a0f864f4
+21	3663	7359242931927283	sdk/CMakeFiles/sdk.dir/src/tri_gmssl.cpp.obj	e61c11ac94e28011

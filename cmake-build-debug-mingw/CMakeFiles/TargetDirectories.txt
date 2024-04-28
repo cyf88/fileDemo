@@ -1,0 +1,8 @@
+E:/35114/fileDemo/cmake-build-debug-mingw/CMakeFiles/edit_cache.dir
+E:/35114/fileDemo/cmake-build-debug-mingw/CMakeFiles/rebuild_cache.dir
+E:/35114/fileDemo/cmake-build-debug-mingw/sdk/CMakeFiles/sdk.dir
+E:/35114/fileDemo/cmake-build-debug-mingw/sdk/CMakeFiles/edit_cache.dir
+E:/35114/fileDemo/cmake-build-debug-mingw/sdk/CMakeFiles/rebuild_cache.dir
+E:/35114/fileDemo/cmake-build-debug-mingw/test/CMakeFiles/test.dir
+E:/35114/fileDemo/cmake-build-debug-mingw/test/CMakeFiles/edit_cache.dir
+E:/35114/fileDemo/cmake-build-debug-mingw/test/CMakeFiles/rebuild_cache.dir
