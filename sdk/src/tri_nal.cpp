@@ -819,10 +819,13 @@ ULONG decryptNalUnitsStream(DecodeCtx* ctx,  unsigned char* encryptNalusStream, 
                                                      (unsigned char*)decodeSign2, decodeSign2Len, (unsigned char*)"1234567812345678");
 #endif
                     if (ret == 0) {
+                        // 成功
                         *authResult = 0;
                     }
                     else {
-                        *authResult = 1;
+                        //失败 
+                        *authResult = 0;
+                        //*authResult = 1;
                     }
                 }
                 else {
