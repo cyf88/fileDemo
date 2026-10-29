@@ -1,0 +1,30 @@
+FROM ubuntu:22.04
+
+EXPOSE 8000/tcp
+
+RUN apt-get update && \
+        DEBIAN_FRONTEND="noninteractive" \
+        apt-get install -y --no-install-recommends \
+        build-essential \
+        cmake && \
+        apt-get autoremove -y && \
+        apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/*
+
+# 使用本地代码构建，不再从 GitHub 拉取
+WORKDIR /opt/sign/fileDemo
+
+COPY CMakeLists.txt ./
+COPY sdk ./sdk
+COPY test ./test
+
+RUN mkdir -p build
+
+WORKDIR /opt/sign/fileDemo/build
+RUN cmake -DCMAKE_BUILD_TYPE=Release .. && \
+    make
+RUN cp test/test /usr/local/bin/ && \
+    cp sdk/libsdk.so /usr/local/lib/
+
+ENV PATH /usr/local/lib/:$PATH
+CMD ["/usr/local/bin/test"]

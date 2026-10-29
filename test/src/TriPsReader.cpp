@@ -28,6 +28,20 @@ static bool readFile(const std::string& filename, char*& buffer, size_t& length)
     return true;
 }
 
+// 查找下一个 PS 起始码（00 00 01 xx）。跳过 H.264 的 4 字节起始码（00 00 00 01），
+// 因为视频 ES 内部使用 4 字节起始码，而 PS 层使用 3 字节起始码。
+static int findNextPsStartCode(unsigned char* buf, unsigned int len) {
+    for (unsigned int i = 0; i + 2 < len; i++) {
+        if (buf[i] == 0x00 && buf[i + 1] == 0x00 && buf[i + 2] == 0x01) {
+            if (i > 0 && buf[i - 1] == 0x00) {
+                continue; // 属于 00 00 00 01，跳过
+            }
+            return i;
+        }
+    }
+    return -1;
+}
+
 TriPsReader::TriPsReader(const char* psFilePath, const char* psCertFilePath, FUNC_SUT_SIGNVERIFYNOTIFY signCb) {
     this->inputFile = psFilePath;
     this->certFile = psCertFilePath;
@@ -222,10 +236,20 @@ void TriPsReader::decodePSPacket(unsigned char* pBuf, unsigned int size) {
         {
             int pes_packet_length = *(pCurBuf + 4) * 256 + *(pCurBuf + 5);
             int pes_header_data_length = *(pCurBuf + 8);
-            int payload_length = pes_packet_length - 3 - pes_header_data_length;
             pCurBuf += 9 + pes_header_data_length;
 
-            if (payload_length < PSBUFLEN - m_PsBufLen)									//视频数据拼包
+            int payload_length;
+            if (pes_packet_length == 0 || pes_packet_length == 0xFFFF) {
+                // 视频 PES 未定长，载荷一直延伸到下一个 PS 起始码（下一个 PES/pack 头）
+                int restLen = (int)((pBuf + size) - pCurBuf);
+                int nextStart = findNextPsStartCode(pCurBuf, restLen);
+                payload_length = (nextStart >= 0) ? nextStart : restLen;
+            }
+            else {
+                payload_length = pes_packet_length - 3 - pes_header_data_length;
+            }
+
+            if (payload_length > 0 && payload_length < PSBUFLEN - m_PsBufLen)			//视频数据拼包
             {
                 memcpy(m_psbuf + m_PsBufLen, pCurBuf, payload_length);
                 m_PsBufLen += payload_length;

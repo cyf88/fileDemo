@@ -30,6 +30,8 @@ int sign_notify(unsigned int uiChan, ULONG ulRetCode, char* streamId, char* time
     if (ulRetCode == 0) {
         signSucNum++;
         std::cout << "signSucNum: " << signSucNum << std::endl;
+    } else if (ulRetCode == 4) {
+        // 未找到签名数据，不参加统计，不认为失败
     } else {
         signFailNum++;
         std::map<std::string, std::string> failmap;

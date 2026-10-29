@@ -14,7 +14,9 @@ using namespace std;
 ULONG bitset_2_char(const std::bitset<MAX_BITS_LENGTH>* bits, ULONG startBitIndex, ULONG len, unsigned char* buf) {
 	char ch = { 0 };
 	for (ULONG i = 0; i < len; i++) {
-
+		if (startBitIndex + i >= MAX_BITS_LENGTH) {
+			break; // 越界保护，避免 bits->test 抛出 out_of_range
+		}
 		if (bits->test(MAX_BITS_LENGTH - 1 - startBitIndex - i)) {	// 第i + j位为1
 			ch = (ch << 1) | 0x1;
 		}
@@ -30,6 +32,10 @@ ULONG bitset_2_char(const std::bitset<MAX_BITS_LENGTH>* bits, ULONG startBitInde
 ULONG array_2_bitset( unsigned char* data,  ULONG dataLen,  std::bitset<MAX_BITS_LENGTH>* out,   ULONG* outLen) {
 	*outLen = 0;
 	ULONG n_bits = dataLen * 8;
+	// 防止数据超过 bitset 容量（MAX_BITS_LENGTH 位，即 1024 字节）导致越界崩溃
+	if (dataLen > MAX_BITS_LENGTH / 8) {
+		dataLen = MAX_BITS_LENGTH / 8;
+	}
 	for (ULONG i = 0; i < dataLen; ++i)
 	{
 		unsigned char ch = data[i];

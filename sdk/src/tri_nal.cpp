@@ -837,7 +837,8 @@ ULONG decryptNalUnitsStream(DecodeCtx* ctx,  unsigned char* encryptNalusStream, 
                 }
             }
             else {
-                *authResult = 2;
+                // 未找到签名数据（auth_data_lenth_minus_1 == 0），不认为失败
+                *authResult = 4;
             }
 
         }
